@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login to SCC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet" />
+    <style>
+      * {
+        font-family: "Noto Sans JP", sans-serif;
+        letter-spacing: 2px;
+      }
+      .login_title {
+        color: white;
+        width: 400px;
+        height: 200px;
+        background-image: url("https://www.ancient-origins.net/sites/default/files/field/image/Agesilaus-II-cover.jpg");
+        background-position: center;
+        background-size: cover;
+
+        border-radius: 20px;
+        text-align: center;
+        padding-top: 60px;
+      }
+
+      .login {
+        width: 400px;
+        margin: 20px auto;
+        background-color: #ffffde;
+        padding: 50px;
+        border-radius: 30px;
+      }
+
+      .login_form {
+        text-align: center;
+      }
+
+      .login_form span {
+        display: inline-block;
+        width: 50px;
+      }
+
+      .login_button {
+        display: block;
+        background: transparent linear-gradient(90deg, #ff001d 0%, #eb05a4 100%) 0% 0% no-repeat padding-box;
+        box-shadow: 0px 4px 12px #2c4d6f4d;
+        border-radius: 10px;
+        opacity: 1;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+        width: 120px;
+        height: 50px;
+        margin: 0 auto;
+        padding: 5px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login_button a {
+        text-decoration: none;
+        color: #fff;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section class="login">
+      <div class="login_title">
+        <h1>Login Page</h1>
+        <h5>Type your ID and PW</h5>
+      </div>
+      <div class="login_form">
+        <p><span>ID: </span><input type="text" /></p>
+        <p><span>PW: </span><input type="text" /></p>
+        <div class="login_button">
+          <a href="#">Login</a>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
