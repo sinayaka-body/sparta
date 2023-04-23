@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fetchを始めてみよう</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      fetch("http://spartacodingclub.shop/en/global_air/osaka") // 基本リクエスト(GET)
+        .then((res) => res.json()) // リクエストして受け取ったデータをJSON化
+        .then((data) => {
+          // JSON化したデータにdataという名前を付与
+          let datas = data["data"]["forecast"];
+          datas.forEach((a) => {
+            // データリストの長さだけ繰り返し開発者ツールに出力
+            // 日付、平均値を出力
+            console.log(a["day"], a["avg"]);
+          });
+        });
+    </script>
+  </head>
+  <body>
+    Fetch練習ページ
+  </body>
+</html>

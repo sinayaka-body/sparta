@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OpenAPIでFetchを練習!</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style type="text/css">
+      div.question-box {
+        margin: 10px 0 20px 0;
+      }
+      .over40 {
+        color: red;
+      }
+    </style>
+
+    <script>
+      function q1() {
+        $("#names-q1").empty();
+        fetch("http://spartacodingclub.shop/en/global_air/osaka")
+          .then((res) => res.json())
+          .then((data) => {
+            let datas = data["data"]["forecast"];
+            let temp_html = "";
+            datas.forEach((a) => {
+              let day = a["day"];
+              let avg = a["avg"];
+              if (avg > 40) {
+                temp_html = `<li class="over40">${day} : ${avg}</li>`;
+              } else {
+                temp_html = `<li>${day} : ${avg}</li>`;
+              }
+              $("#names-q1").append(temp_html);
+            });
+          });
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Fetch練習!</h1>
+
+    <hr />
+
+    <div class="question-box">
+      <h2>1. OpenAPIを利用する</h2>
+      <p>日付と平均値を全て表示</p>
+      <p>アップデートボタンを押す度に、消してもう一度表示</p>
+      <button onclick="q1()">アップデート</button>
+      <ul id="names-q1">
+        <li>2023-01-11 : xx</li>
+        <li>2023-01-11 : xx</li>
+        <li>2023-01-11 : xx</li>
+        <li>2023-01-11 : xx</li>
+      </ul>
+    </div>
+  </body>
+</html>

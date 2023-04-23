@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="jp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Fetch練習!</title>
+    <!-- JQueryを import します -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+      div.question-box {
+        margin: 10px 0 20px 0;
+      }
+
+      table {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 10px;
+        border: 1px solid;
+      }
+
+      .under5 td {
+        color: red;
+      }
+    </style>
+
+    <script>
+      function q1() {
+        fetch("http://spartacodingclub.shop/sparta_api/bike_jp")
+          .then((response) => response.json())
+          .then((data) => {
+            $("#names-q1").empty();
+            let rows = data["getStationList"]["row"];
+            rows.forEach((a) => {
+              let name = a["stationName"];
+              let rack = a["rackTotCnt"];
+              let bike = a["parkingBikeTotCnt"];
+              let temp_html = "";
+              if (bike < 5) {
+                temp_html = `<tr class="under5">
+                                    <td>${name}</td>
+                                    <td>${rack}</td>
+                                    <td>${bike}</td>
+                                </tr>`;
+              } else {
+                temp_html = `<tr>
+                                    <td>${name}</td>
+                                    <td>${rack}</td>
+                                    <td>${bike}</td>
+                                </tr>`;
+              }
+              $("#names-q1").append(temp_html);
+            });
+          });
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>Fetchを練習しよう!</h1>
+
+    <hr />
+
+    <div class="question-box">
+      <h2>2. OpenAPI(日本、各駅のレンタサイクル情報)を利用する。</h2>
+      <p>全ての駅のレンタサイクル情報を表示する</p>
+      <p>アップデートボタンを押す度に消して表示し直す</p>
+      <button onclick="q1()">アップデート</button>
+      <table>
+        <thead>
+          <tr>
+            <td>駅名</td>
+            <td>スタンド数</td>
+            <td>現在貸し出し可能な数</td>
+          </tr>
+        </thead>
+        <tbody id="names-q1">
+          <tr>
+            <td>xxx駅</td>
+            <td>22</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>yyy駅</td>
+            <td>18</td>
+            <td>0</td>
+          </tr>
+          <tr>
+            <td>zzz駅</td>
+            <td>20</td>
+            <td>0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

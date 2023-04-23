@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript文法練習</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
+  <script>
+    function checkResult() {
+      let fruits = ["りんご", "なし", "かき", "みかん", "すいか"];
+      $("#q1").empty();
+      fruits.forEach((a) => {
+        let temp_html = `<p>${a}</p>`;
+        $("#q1").append(temp_html);
+      });
+
+      let people = [
+        { name: "太郎", age: 24 },
+        { name: "花子", age: 30 },
+        { name: "伸夫", age: 12 },
+        { name: "夏美", age: 15 },
+        { name: "和人", age: 18 },
+        { name: "玲奈", age: 36 },
+      ];
+      $("#q2").empty();
+      people.forEach((a) => {
+        let name = a["name"];
+        let age = a["age"];
+        let temp_html = `<p>${name}は ${age}歳です</p>`;
+        $("#q2").append(temp_html);
+      });
+    }
+  </script>
+
+  <body>
+    <div class="top-part">
+      <h1>JavaScript文法練習</h1>
+    </div>
+    <hr />
+    <br />
+    <h2>1. 関数</h2>
+    <div class="button-part">
+      <button onclick="checkResult()">結果確認</button>
+    </div>
+    <div class="list-part">
+      <h2>2. 貼り付け</h2>
+      <div id="q1" class="q1-class">
+        <p>りんご</p>
+        <p>みかん</p>
+        <p>かき</p>
+      </div>
+    </div>
+    <div class="list-part">
+      <h2>3. 貼り付け</h2>
+      <div id="q2">
+        <p>太郎は 24歳です。</p>
+        <p>花子は 30歳です。</p>
+        <p>伸夫は 20歳です。</p>
+      </div>
+    </div>
+  </body>
+</html>
